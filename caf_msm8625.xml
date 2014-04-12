@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote  name="github" fetch="git://github.com/" />
+  <remote fetch="git://codeaurora.org/" name="caf" review="codeaurora.org"/>
+
+  <remove-project name="kernel/msm" />
+  <remove-project name="platform/vendor/qcom/msm8625" />
+
+  <project name="dhacker29/android_kernel_nokia_normandy" path="kernel" remote="github" revision="jellybean" />
+  <project name="dhacker29/android_device_qcom_msm8625" path="device/qcom/msm8625" remote="github" revision="jellybean" />
+  <project path="vendor/nokia/normandy" name="dhacker29/android_vendor_nokia_normandy" remote="github" revision="jellybean" />
+</manifest>
