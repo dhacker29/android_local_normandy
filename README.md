@@ -11,8 +11,8 @@ familiar with [Git and Repo](http://source.android.com/download/using-repo).
 
 Make a build directory:
 
-	mkdir Andoid (or whatever name you choose)
-	cd Android (or the name  you chose)
+	mkdir Andoid (or whatever name you choose, which will be refered to as Android throughout)
+	cd Android
 	mkdir .repo/local_manifests
 
 To initialize your local repository using the CAF manifest, use commands like these:
@@ -22,8 +22,19 @@ To initialize your local repository using the CAF manifest, use commands like th
     curl -L -o .repo/local_manifests/caf_msm8625.xml -O -L https://raw.github.com/dhacker29/android_local_normandy/caf_jb_rel_2.0.3/caf_msm8625.xml
  
     	( or Download: https://github.com/dhacker29/android_local_normandy/blob/caf_jb_rel_2.0.3/caf_msm8625.xml
-		and place it in ~/Android/.repo/local_manifest.xml (or ~/'name you chose'/.repo)
+		and place it in ~/Android/.repo/local_manifest.xml
 
 Then to sync up:
 
     repo sync
+
+You will need to apply some pathces to fix build erros and other bugs:
+
+    cd Android/device/nokia/normandy/patches
+    ./apply.sh
+
+To build issue commands like these:
+
+    cd Android
+    . build/envsetup.sh && lunch msm8625-userdebug
+    make -jX otapackage (where X equals twice the number of cpu cores +1)
